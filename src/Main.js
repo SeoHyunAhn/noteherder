@@ -6,7 +6,7 @@ import { height } from 'window-size';
 
 const Main = () => {
     return (
-        <div className="Main">
+        <div className="Main" style={style}>
             <Sidebar />
             <NoteList />
             <NoteFrom />
