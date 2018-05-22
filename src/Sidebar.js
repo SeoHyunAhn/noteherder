@@ -19,7 +19,7 @@ const Sidebar = () => {
 
             </a>
             <div className="SignOut" style={styles.signOut}>
-            <button style={styles.SignoutBut}>
+            <button style={{...styles.SignoutBut, ...styles.signOut}}>
               <i className="fa fa-sign-out" style={styles.signOutButI}></i>
             </button>
           </div>

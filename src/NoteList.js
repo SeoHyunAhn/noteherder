@@ -4,7 +4,7 @@ const NoteList = () =>{
     return (
         <div class="NoteList" style={styles.noteList}>
         <h3 style={styles.noteListH3}>Notes</h3>
-        <ul id="notes" style={styles.noteListUlList}>
+        <ul id="notes" style={{...styles.noteListUlList, ...styles.noteListULNoteATransition}}>
           <a class="active" style={styles.noteListUlNoteA}>
             <li>
               <div class="note" style={styles.noteListUlNoteLi}>
