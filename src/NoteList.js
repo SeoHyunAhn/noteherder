@@ -2,16 +2,16 @@ import React from 'react'
 
 const NoteList = () =>{
     return (
-        <div class="NoteList">
-        <h3>Notes</h3>
-        <ul id="notes">
-          <a class="active">
+        <div class="NoteList" style={styles.noteList}>
+        <h3 style={styles.noteListH3}>Notes</h3>
+        <ul id="notes" style={styles.noteListUlList}>
+          <a class="active" style={styles.noteListUlNoteA}>
             <li>
-              <div class="note">
-                <div class="note-title">
+              <div class="note" style={styles.noteListUlNoteLi}>
+                <div class="note-title" style={styles.noteListULNotesLiTitle}>
                   Kohlrabi welsh
                 </div>
-                <div class="note-body">
+                <div class="note-body" style={styles.noteListULNoteLiBody}>
                   <p>
                     Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon azuki bean garlic.
                   </p>
@@ -21,11 +21,11 @@ const NoteList = () =>{
           </a>
           <a>
             <li>
-              <div class="note">
-                <div class="note-title">
+              <div class="note" style={styles.noteListUlNoteLi}>
+                <div class="note-title" style={styles.noteListULNotesLiTitle}>
                   Dandelion cucumber
                 </div>
-                <div class="note-body">
+                <div class="note-body" style={styles.noteListULNoteLiBody}>
                   <p>
                     Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette tatsoi pea sprouts fava bean collard greens dandelion okra wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini.
                   </p>
@@ -35,11 +35,11 @@ const NoteList = () =>{
           </a>
           <a>
             <li>
-              <div class="note">
-                <div class="note-title">
+              <div class="note" style={styles.noteListUlNoteLi}>
+                <div class="note-title" style={styles.noteListULNotesLiTitle}>
                   Prairie turnip
                 </div>
-                <div class="note-body">
+                <div class="note-body" style={styles.noteListULNoteLiBody}>
                   <p>
                     Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts black-eyed pea prairie turnip leek lentil turnip greens parsnip.
                   </p>
