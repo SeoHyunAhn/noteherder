@@ -4,13 +4,16 @@ import quill from './quill.svg'
 import newIcon from './new.png'
 import newHover from './new-hover.png'
 
-const Sidebar = () => {
+const Sidebar = ({resetCurrentNote}) => {
     return (
         <nav className={css(styles.sidebar)}>
             <div className={css(styles.logo)}>
                 <img src={quill} alt="Noteherder" className={css(styles.logoImg)} />
             </div>
-            <a href="/notes" className={css(styles.newNote)} >
+            <a href="/notes" className={css(styles.newNote)} onClick={(ev) =>{
+                ev.preventDefault()
+                resetCurrentNote()
+                }}>
                 <img
                     src={newHover}
                     alt="New Note" className={css(styles.aImg)} />
