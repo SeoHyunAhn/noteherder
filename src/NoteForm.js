@@ -1,10 +1,10 @@
 import React from 'react'
 import './App.css'
-const NoteFrom = ({currentNote, setCurrentNote}) => {
+const NoteFrom = ({currentNote, saveNote}) => {
   const handelChanges = (ev) => {
     const note = {...currentNote}
     note[ev.target.name] = ev.target.value
-    setCurrentNote(note)
+    saveNote(note)
   }
 
   return (

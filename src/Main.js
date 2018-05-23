@@ -29,22 +29,37 @@ class Main extends React.Component {
     }
     blankNote = () => {
         return {
-        id:null, title:"", body:""
+            id: null, title: "", body: ""
         }
     }
-    resetCurrentNote= () =>{
+    resetCurrentNote = () => {
         this.setCurrentNote(this.blankNote())
     }
 
     setCurrentNote = (note) => {
         this.setState({ currentNote: note })
     }
+    saveNote = (note) => {
+        const notes = [ ...this.state.notes ]
+
+        if (!note.id){
+            note.id = Date.now()
+            notes.push(note)
+        }else {
+        const i = notes.findIndex(currentNote => currentNote.id === note.id )
+        notes[i] = note
+        }
+        
+        this.setState ({notes})
+        this.setCurrentNote(note)
+    }
+
     render() {
         return (
             <div className="Main" style={style}>
-                <Sidebar resetCurrentNote={this.resetCurrentNote}/>
+                <Sidebar resetCurrentNote={this.resetCurrentNote} />
                 <NoteList notes={this.state.notes} setCurrentNote={this.setCurrentNote} />
-                <NoteFrom currentNote={this.state.currentNote} setCurrentNote={this.setCurrentNote}/>
+                <NoteFrom currentNote={this.state.currentNote} saveNote={this.saveNote} />
             </div>
         )
     }
