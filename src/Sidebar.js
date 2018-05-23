@@ -1,49 +1,47 @@
 import React from 'react'
+import {StyleSheet, css } from 'aphrodite'
 import quill from './quill.svg'
 import newIcon from './new.png'
 import newHover from './new-hover.png'
 
-class Sidebar extends React.Component{
-   state = {
-       newIconHov: false,
-   }
-   handleMouseEnter(){
-       this.setState({
-           newIconHov:true
-       })
-   }
-   handleMouseLeave(){
-    this.setState({
-        newIconHov:false
-    })
+const Sidebar = () => {
+    //    state = {
+    //        newIconHov: false,
+    //    }
+    //    handleMouseEnter(){
+    //        this.setState({
+    //            newIconHov:true
+    //        })
+    //    }
+    //    handleMouseLeave(){
+    //     this.setState({
+    //         newIconHov:false
+    //     })}
+    return (
+        <nav className={css(styles.sidebar)}>
+            <div className={css(styles.logo)}>
+                <img src={quill} alt="Noteherder" style={styles.logoImg} />
+            </div>
+            <a href="/notes" className={css(styles.newNote)} >
+                <img
+                    src={newHover}
+                    alt="New Note" className={css(styles.aImg)} />
+                <img
+                    src={newIcon}
+                    alt="New Note" className={ css(styles.aImg, styles.newNoteImgHov) } />
 
-   }
-    render() {
-        return (
-            <nav className="Sidebar" style={styles.sidebar}>
-                <div className="logo" style={styles.logo}>
-                    <img src={quill} alt="Noteherder" style={styles.logoImg} />
-                </div>
-                <a href="/notes" style={styles.newNote} onMouseEnter={() => this.handleMouseEnter()}
-                        onMouseLeave={() => this.handleMouseLeave()}>
-                    <img
-                        src={newHover}
-                        alt="New Note"  style={styles.aImg}/>
-                    <img
-                        src={newIcon}
-                        alt="New Note" style={{...styles.aImg, opacity: this.state.newIconHov ? 0: 1}} />
-
-                </a>
-                <div className="SignOut" style={styles.signOut}>
-                    <button style={{ ...styles.SignoutBut, ...styles.signOut }}>
-                        <i className="fa fa-sign-out" style={styles.signOutButI}></i>
-                    </button>
-                </div>
-            </nav>
-        )
-    }
+            </a>
+            <div className={css(styles.signOut)}>
+                <button className={css(styles.SignoutBut )}>
+                    <i className={`fa fa-sign-out ${css(styles.signOutButI)}`}></i>
+                </button>
+            </div>
+        </nav>
+    )
 }
-const styles = {
+    
+
+const styles = StyleSheet.create ({
     sidebar: {
         width: '6rem',
         backgroundColor: '#f3f3f3',
@@ -65,6 +63,11 @@ const styles = {
         marginTop: '2rem',
         position: 'relative',
         width: '40px',
+    },
+    newNoteImgHov:{
+        '.hover':{
+            opacity: 0,
+        },
     },
     button: {
         backgroundColor: 'transparent',
@@ -91,6 +94,6 @@ const styles = {
     signOutButI: {
         fontSize: '2rem'
     },
-}
+})
 
 export default Sidebar
