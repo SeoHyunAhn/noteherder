@@ -14,10 +14,11 @@ const NoteFrom = (props) => {
             type="text"
             name="title"
             placeholder="Title your note"
+            value={props.currentNote.title}
           />
         </p>
 
-          <textarea name="body"></textarea>
+          <textarea name="body" value={props.currentNote.body}></textarea>
       </form>
     </div>
       )
