@@ -44,7 +44,7 @@ class Main extends React.Component {
             <div className="Main" style={style}>
                 <Sidebar resetCurrentNote={this.resetCurrentNote}/>
                 <NoteList notes={this.state.notes} setCurrentNote={this.setCurrentNote} />
-                <NoteFrom currentNote={this.state.currentNote}/>
+                <NoteFrom currentNote={this.state.currentNote} setCurrentNote={this.setCurrentNote}/>
             </div>
         )
     }
