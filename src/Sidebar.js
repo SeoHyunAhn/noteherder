@@ -36,7 +36,7 @@ const styles = StyleSheet.create ({
         padding: '0.5rem 0',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'stretch',
+        alignItems: 'center',
     },
     logo: {
         fontfamily: 'Fauna One',
