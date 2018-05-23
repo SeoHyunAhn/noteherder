@@ -12,8 +12,7 @@ const Sidebar = ({resetCurrentNote}) => {
             </div>
             <a href="/notes" className={css(styles.newNote)} onClick={(ev) =>{
                 ev.preventDefault()
-                resetCurrentNote()
-                }}>
+                resetCurrentNote()}}>
                 <img
                     src={newHover}
                     alt="New Note" className={css(styles.aImg)} />
