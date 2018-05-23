@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css'
-const NoteFrom = (props) => {
+const NoteFrom = ({currentNote}) => {
   return (
     <div className="NoteForm">
       <div className="form-actions">
@@ -14,11 +14,11 @@ const NoteFrom = (props) => {
             type="text"
             name="title"
             placeholder="Title your note"
-            value={props.currentNote.title}
+            value={currentNote.title}
           />
         </p>
 
-          <textarea name="body" value={props.currentNote.body}></textarea>
+          <textarea name="body" value={currentNote.body}></textarea>
       </form>
     </div>
       )
