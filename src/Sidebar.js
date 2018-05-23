@@ -3,28 +3,45 @@ import quill from './quill.svg'
 import newIcon from './new.png'
 import newHover from './new-hover.png'
 
-const Sidebar = () => {
-    return (
-        <div className="Sidebar" style={styles.sidebar}>
-            <div className="logo" style={styles.logo}>
-                <img src={quill} alt="Noteherder" style={styles.logoImg}/>
-            </div>
-            <a href="/notes" style={styles.newNote}>
-                <img
-                    src={newHover}
-                    alt="New Note"  style={styles.aHovImg}/>
-                <img
-                    src={newIcon}
-                    alt="New Note" style={styles.aImg}/>
+class Sidebar extends React.Component{
+   state = {
+       newIconHov: false,
+   }
+   handleMouseEnter(){
+       this.setState({
+           newIconHov:true
+       })
+   }
+   handleMouseLeave(){
+    this.setState({
+        newIconHov:false
+    })
 
-            </a>
-            <div className="SignOut" style={styles.signOut}>
-            <button style={{...styles.SignoutBut, ...styles.signOut}}>
-              <i className="fa fa-sign-out" style={styles.signOutButI}></i>
-            </button>
-          </div>
-        </div>
-    )
+   }
+    render() {
+        return (
+            <nav className="Sidebar" style={styles.sidebar}>
+                <div className="logo" style={styles.logo}>
+                    <img src={quill} alt="Noteherder" style={styles.logoImg} />
+                </div>
+                <a href="/notes" style={styles.newNote} onMouseEnter={() => this.handleMouseEnter()}
+                        onMouseLeave={() => this.handleMouseLeave()}>
+                    <img
+                        src={newHover}
+                        alt="New Note"  style={styles.aImg}/>
+                    <img
+                        src={newIcon}
+                        alt="New Note" style={{...styles.aImg, opacity: this.state.newIconHov ? 0: 1}} />
+
+                </a>
+                <div className="SignOut" style={styles.signOut}>
+                    <button style={{ ...styles.SignoutBut, ...styles.signOut }}>
+                        <i className="fa fa-sign-out" style={styles.signOutButI}></i>
+                    </button>
+                </div>
+            </nav>
+        )
+    }
 }
 const styles = {
     sidebar: {
