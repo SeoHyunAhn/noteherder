@@ -5,22 +5,10 @@ import newIcon from './new.png'
 import newHover from './new-hover.png'
 
 const Sidebar = () => {
-    //    state = {
-    //        newIconHov: false,
-    //    }
-    //    handleMouseEnter(){
-    //        this.setState({
-    //            newIconHov:true
-    //        })
-    //    }
-    //    handleMouseLeave(){
-    //     this.setState({
-    //         newIconHov:false
-    //     })}
     return (
         <nav className={css(styles.sidebar)}>
             <div className={css(styles.logo)}>
-                <img src={quill} alt="Noteherder" style={styles.logoImg} />
+                <img src={quill} alt="Noteherder" className={css(styles.logoImg)} />
             </div>
             <a href="/notes" className={css(styles.newNote)} >
                 <img
@@ -32,8 +20,8 @@ const Sidebar = () => {
 
             </a>
             <div className={css(styles.signOut)}>
-                <button className={css(styles.SignoutBut )}>
-                    <i className={`fa fa-sign-out ${css(styles.signOutButI)}`}></i>
+                <button className={css(styles.SignoutBut, styles.button )}>
+                    <i className={`fas fa-sign-out-alt ${css(styles.signOutButI)}`} title="signout"></i>
                 </button>
             </div>
         </nav>
@@ -65,7 +53,7 @@ const styles = StyleSheet.create ({
         width: '40px',
     },
     newNoteImgHov:{
-        '.hover':{
+        ':hover':{
             opacity: 0,
         },
     },
