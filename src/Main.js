@@ -62,9 +62,8 @@ class Main extends React.Component {
         // debugger
         notes.splice(i, 1)
         this.setState({notes})
-        debugger
         if(note[i]!=null){
-        this.setCurrentNote(notes[i])
+            this.setCurrentNote(notes[i])
         }else{
             this.setCurrentNote(notes[i-1])
         }
