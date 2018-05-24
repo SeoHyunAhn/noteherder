@@ -1,7 +1,7 @@
 import React from 'react'
 import './SignIn.css'
 import googlelogo from './google.svg'
-import { auth , githubProvider } from './base'
+import { auth , githubProvider, googleProvider } from './base'
 
 
 const SignIn = () => {
@@ -22,7 +22,7 @@ const SignIn = () => {
                     <i className="fab fa-github"></i>
                     Sign in with GitHub
           </button>
-                <button className="google">
+                <button className="google" onClick={ () =>authenticate(googleProvider)}>
                     <img src={googlelogo} alt="" />
                     Sign in with Google
           </button>
