@@ -9,24 +9,17 @@ class Main extends React.Component {
         super()
         this.state = {
             currentNote: this.blankNote(),
-            notes: [{
-                id: 1,
-                title: 'why i <3 js',
-                body: 'bc i like code',
-            },
-            {
-                id: 2,
-                title: 'breakfast',
-                body: 'i <3 it',
-            },
-            {
-                id: 3,
-                title: 'watching the first ep of black mirror',
-                body: 'dont\'t',
-            }
+            notes: [
             ]
         }
     }
+componentDidMount(){
+    const notes = JSON.parse(window.localStorage.getItem('notes'))
+    if (notes) {
+        this.setState({notes})
+    }
+}
+
     blankNote = () => {
         return {
             id: null, title: "", body: ""
@@ -52,6 +45,8 @@ class Main extends React.Component {
         
         this.setState ({notes})
         this.setCurrentNote(note)
+
+        window.localStorage.setItem('notes', JSON.stringify(notes))
     }
     deleteNote = (note) =>{
         const notes = [...this.state.notes]
@@ -60,14 +55,11 @@ class Main extends React.Component {
         // notes[i].title=""
         // notes[i].body=""
         // debugger
+        if (i>-1){
         notes.splice(i, 1)
         this.setState({notes})
-        if(note[i]!=null){
-            this.setCurrentNote(notes[i])
-        }else{
-            this.setCurrentNote(notes[i-1])
-        }
-        
+        window.localStorage.setItem('notes', JSON.stringify(notes))
+    }
     }
 
     render() {
