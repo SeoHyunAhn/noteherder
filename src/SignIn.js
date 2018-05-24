@@ -1,5 +1,6 @@
 import React from 'react'
-
+import './SignIn.css'
+import googlelogo from './google.svg'
 const SignIn = ({handleAuth}) => {
     return (
         <div className="SignIn">
@@ -11,11 +12,11 @@ const SignIn = ({handleAuth}) => {
                 <h3>Hey, Nerd! You Like Notes?</h3>
                 <p>You never know when you'll need to write crap down. In fact, you should probably be taking notes right now.</p>
                 <button className="github" onClick={handleAuth}>
-                    <i className="fa fa-github"></i>
+                    <i className="fab fa-github"></i>
                     Sign in with GitHub
           </button>
                 <button className="google">
-                    <img src="media/google.svg" alt="" />
+                    <img src={googlelogo} alt="" />
                     Sign in with Google
           </button>
             </main>
