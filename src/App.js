@@ -1,16 +1,26 @@
 import React, { Component } from 'react';
 
 import './App.css';
+import { auth } from './base'
 import Main from './Main'
-import Signin from './SignIn'
+import SignIn from './SignIn'
 
 class App extends Component {
+  componentDidMount() {
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        this.handleAuth(user)
+      } else {
+        this.signOut()
+      }
+    })
+  }
   state = {
     uid: null,
   }
 
-  handleAuth = () => {
-    this.setState({uid: 'something'})
+  handleAuth = (user) => {
+    this.setState({ uid: user.uid })
   }
 
   signedIn = () => {
@@ -18,17 +28,18 @@ class App extends Component {
   }
 
   signOut = () => {
-    this.setState({uid:null})
+    this.setState({ uid: null })
+    auth.signOut()
   }
 
   render() {
     return (
       <div className="App">
-      {
-        this.signedIn() 
-        ? <Main signOut={this.signOut}/> 
-        : <Signin handleAuth = {this.handleAuth}/>
-      }
+        {
+          this.signedIn()
+            ? <Main signOut={this.signOut} />
+            : <SignIn handleAuth={this.handleAuth} />
+        }
       </div>
     )
   }
