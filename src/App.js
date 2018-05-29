@@ -7,7 +7,10 @@ import SignIn from './SignIn'
 
 class App extends Component {
   componentWillMount() {
-    this.checkLocalStorage()
+    const uid = localStorage.getItem('userID')
+    if (uid) {
+      return this.setState({uid})
+    }
     auth.onAuthStateChanged(user => {
       if (user) {
         this.handleAuth(user)
@@ -22,7 +25,7 @@ class App extends Component {
   checkLocalStorage = () => {
     debugger
     const uid = window.localStorage.getItem('userID')
-    if(!uid){
+    if(uid){
       return this.setState({uid})
     }
   }
@@ -39,7 +42,7 @@ class App extends Component {
   signOut = () => {
     //null
     this.setState({ uid: null })
-    window.localStorage.setItem('userID', JSON.stringify(null))
+    window.localStorage.removeItem('userID')
     auth.signOut()
   }
 
