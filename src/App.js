@@ -55,6 +55,11 @@ class App extends Component {
           this.signedIn() ? <Redirect to="/notes" /> : (<SignIn/>)}/>
         <Route path="/notes" render={() => 
         this.signedIn() ? <Main signOut={this.signOut} uid={this.state.uid}/> : (<Redirect to="sign-in"/>)}/>}/>
+        <Route 
+          render={() => (
+            this.signedIn() ? <Redirect to="/notes" /> : <Redirect to="sign-in" />
+          )}
+        />
       </Switch>
       </div>
       //   {      
