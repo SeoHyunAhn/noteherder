@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import {Route, Switch} from 'react-router-dom'
 import './App.css';
 import { auth } from './base'
 import Main from './Main'
@@ -50,13 +50,17 @@ class App extends Component {
     debugger
     return (
       <div className="App">
-        {
-          
-          this.signedIn()
-            ? <Main signOut={this.signOut} uid={this.state.uid} />
-            : <SignIn handleAuth={this.handleAuth} />
-        }
+      <Switch>
+        <Route path="/sign-in" component={SignIn}/>
+        <Route path="/notes" render={() => <Main signOut={this.signOut} uid={this.state.uid} />}/>
+      </Switch>
       </div>
+      //   {      
+      //     this.signedIn()
+      //       ? <Main signOut={this.signOut} uid={this.state.uid} />
+      //       : <SignIn handleAuth={this.handleAuth} />
+      //   }
+      
     )
   }
 }
