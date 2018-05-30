@@ -31,7 +31,7 @@ class App extends Component {
   }
   handleAuth = (user) => {
     //.uid
-    window.localStorage.setItem('userID', JSON.stringify(user.uid))
+    window.localStorage.setItem('userID', (user.uid))
     this.setState({ uid: user.uid })
   }
 
@@ -47,7 +47,7 @@ class App extends Component {
   }
 
   render() {
-    debugger
+    // debugger
     return (
       <div className="App">
       <Switch>
