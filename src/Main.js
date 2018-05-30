@@ -77,16 +77,25 @@ class Main extends React.Component {
                     signOut={this.props.signOut} />
                 <NoteList notes={this.state.notes}
                     setCurrentNote={this.setCurrentNote} />
-                <NoteFrom currentNote={this.state.currentNote}
-                    saveNote={this.saveNote}
-                    deleteNote={this.deleteNote} />
                 <Switch>
-                    <Route path="/notes/:id" render={navProps =>
-                        <NoteFrom
-                            {...formProps}
-                            {...navProps} />
-                    } />
-                </Switch>
+          <Route
+            path="/notes/:id"
+            render={navProps => (
+              <NoteFrom
+                {...formProps}
+                {...navProps}
+              />
+            )}
+          />
+          <Route
+            render={navProps => (
+              <NoteFrom
+                {...formProps}
+                {...navProps}
+              />
+            )}
+          />
+        </Switch>
             </div>
         )
     }
