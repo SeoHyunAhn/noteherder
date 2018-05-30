@@ -17,7 +17,7 @@ class NoteFrom extends Component {
 componentWillReceiveProps=(newProps) => {
   const newid = newProps.match.params.id
   const  i = newProps.notes.findIndex(currentNote => currentNote.id.toString() === newid)
-  const note = newProps.notes[i]
+  const note = newProps.notes[i] || this.blankNote()
   if (note) {
     this.setState({note})
   }
