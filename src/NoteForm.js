@@ -29,17 +29,13 @@ componentWillReceiveProps=(newProps) => {
       {note}, () =>
     this.props.saveNote(note))
   }
-   handleDelete = (ev) =>{
-    const note = {...this.props.currentNote}
-    this.props.deleteNote(note)
-  }
   render(){
     const { deleteNote}=this.props
     
   return (
     <div className="NoteForm">
       <div className="form-actions">
-        <button type="button" onClick={this.handleDelete}>
+        <button type="button" onClick={() =>deleteNote(this.state.note)}>
           <i className="far fa-trash-alt" ></i>
         </button>
       </div>

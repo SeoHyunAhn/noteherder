@@ -10,7 +10,7 @@ class Main extends React.Component {
     constructor() {
         super()
         this.state = {
-            currentNote: this.blankNote(),
+            // currentNote: this.blankNote(),
             notes: [
             ]
         }
@@ -28,13 +28,13 @@ class Main extends React.Component {
             id: null, title: "", body: ""
         }
     }
-    resetCurrentNote = () => {
-        this.setCurrentNote(this.blankNote())
-    }
+    // resetCurrentNote = () => {
+    //     this.setCurrentNote(this.blankNote())
+    // }
 
-    setCurrentNote = (note) => {
-        this.setState({ currentNote: note })
-    }
+    // setCurrentNote = (note) => {
+    //     this.setState({ currentNote: note })
+    // }
     saveNote = (note) => {
         let shouldRedirect = false
         const notes = [...this.state.notes]
@@ -56,25 +56,23 @@ class Main extends React.Component {
 
         // window.localStorage.setItem('notes', JSON.stringify(notes))
     }
-    deleteNote = (note) => {
+    deleteNote = (currentNot) => {
         const notes = [...this.state.notes]
-        const i = notes.findIndex(currentNote => currentNote.id === note.id)
-        // notes[i].id = null
-        // notes[i].title=""
-        // notes[i].body=""
-        // debugger
+        const id = this.props.match.params.id
+        const i = notes.findIndex(note => note.id === currentNot.id)
         if (i > -1) {
             notes.splice(i, 1)
             this.setState({ notes })
+            this.props.history.push(`/notes`)
             // window.localStorage.setItem('notes', JSON.stringify(notes))
         }
     }
 
     render() {
         const formProps = {
-            currentNote: this.state.currentNote,
+            // currentNote: this.state.currentNote,
             saveNote: this.saveNote,
-            removeCurrentNote: this.removeCurrentNote,
+            deleteNote: this.deleteNote,
             
       notes: this.state.notes,
         }
@@ -82,8 +80,7 @@ class Main extends React.Component {
             <div className="Main" style={style}>
                 <Sidebar
                     signOut={this.props.signOut} />
-                <NoteList notes={this.state.notes}
-                    setCurrentNote={this.setCurrentNote} />
+                <NoteList notes={this.state.notes}/>
                 <Switch>
           <Route
             path="/notes/:id"
