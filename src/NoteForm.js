@@ -11,11 +11,12 @@ class NoteFrom extends Component {
   }
   blankNote = () => {
     return {
-        id: null, title: "", body: ""
+        id: null, title: "", body: "",
+        updateAt: null
     }
 }
 componentDidUpdate= () =>{
-  const newID = this.props.math.params.id || ''
+  const newID = this.props.match.params.id || ''
   const oldID = this.state.note.id || ''
 
   if (newID !== oldID.toString()) {
@@ -25,18 +26,18 @@ componentDidUpdate= () =>{
     if (note.id !== this.state.note.id){
 
     this.setState({note})}
-    
+
   }
 
 }
-componentWillReceiveProps=(newProps) => {
-  const newid = newProps.match.params.id
-  const  i = newProps.notes.findIndex(currentNote => currentNote.id.toString() === newid)
-  const note = newProps.notes[i] || this.blankNote()
-  if (note) {
-    this.setState({note})
-  }
-}
+// componentWillReceiveProps=(newProps) => {
+//   const newid = newProps.match.params.id
+//   const  i = newProps.notes.findIndex(currentNote => currentNote.id.toString() === newid)
+//   const note = newProps.notes[i] || this.blankNote()
+//   if (note) {
+//     this.setState({note})
+//   }
+// }
    handelChanges = (ev) => {
     const note = {...this.state.note}
     note[ev.target.name] = ev.target.value

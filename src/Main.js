@@ -22,12 +22,6 @@ class Main extends React.Component {
             asArray: true
         })
     }
-
-    blankNote = () => {
-        return {
-            id: null, title: "", body: ""
-        }
-    }
     // resetCurrentNote = () => {
     //     this.setCurrentNote(this.blankNote())
     // }
@@ -38,6 +32,8 @@ class Main extends React.Component {
     saveNote = (note) => {
         let shouldRedirect = false
         const notes = [...this.state.notes]
+        const timestamp = Date.now()
+        note.updateAt = timestamp
 
         if (!note.id) {
             note.id = Date.now()
@@ -47,6 +43,10 @@ class Main extends React.Component {
             const i = notes.findIndex(currentNote => currentNote.id === note.id)
             notes[i] = note
         }
+        notes.sort((a, b)=> {
+            return b.updateAt - a.updateAt
+        }
+    )
 
         this.setState({ notes })
         // this.setCurrentNote(note)

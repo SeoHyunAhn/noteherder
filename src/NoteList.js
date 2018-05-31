@@ -3,6 +3,9 @@ import './App.css'
 import Note from './Note'
 
 const NoteList = ({notes, setCurrentNote}) => {
+  // const sortNotes =() => {
+
+  // }
   return (
     <div className="NoteList">
       <h3>Notes</h3>
