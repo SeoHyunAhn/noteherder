@@ -14,6 +14,21 @@ class NoteFrom extends Component {
         id: null, title: "", body: ""
     }
 }
+componentDidUpdate= () =>{
+  const newID = this.props.math.params.id || ''
+  const oldID = this.state.note.id || ''
+
+  if (newID !== oldID.toString()) {
+    const i = this.props.notes.findIndex(currentNote =>currentNote.id.toString() === newID )
+    const note = this.props.notes[i] || this.blankNote()
+    
+    if (note.id !== this.state.note.id){
+
+    this.setState({note})}
+    
+  }
+
+}
 componentWillReceiveProps=(newProps) => {
   const newid = newProps.match.params.id
   const  i = newProps.notes.findIndex(currentNote => currentNote.id.toString() === newid)
